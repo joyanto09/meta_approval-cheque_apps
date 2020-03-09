@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Approval Categori-->
+    <record model="ir.module.category" id="module_purchase_approval">
+        <field name="name">Approval Level For Purchase</field>
+        <field name="description">Category For Purchase Approval</field>
+        <!-- <field name="sequence">8</field> -->
+    </record>
+
+    <!--Operation Send Groups-->
+    <record id="operation_send_approve" model ="res.groups">
+        <field name="name">Operation Send Approval</field>
+        <field name="category_id" ref="module_purchase_approval"/>
+    </record>
+
+    <!--Internal Audit Groups-->
+    <record id="internal_audit_approve" model ="res.groups">
+        <field name="name">Internal Audit Approve</field>
+        <field name="category_id" ref="module_purchase_approval"/>
+    </record>
+    <!--Bpo Groups-->
+    <record id="bpo_approve" model ="res.groups">
+        <field name="name">BPO Approve</field>
+        <field name="category_id" ref="module_purchase_approval"/>
+    </record>
+    <!--Head of Procurment Groups-->
+    <record id="hop_approve" model ="res.groups">
+        <field name="name">Head of Procurment Approve</field>
+        <field name="category_id" ref="module_purchase_approval"/>
+    </record>
+    <!--CEO Groups-->
+    <record id="ceo_approve" model ="res.groups">
+        <field name="name">CEO Approve</field>
+        <field name="category_id" ref="module_purchase_approval"/>
+    </record>
+
+</odoo>

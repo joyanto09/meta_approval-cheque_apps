@@ -1,0 +1,15 @@
+/*
+ *  WARNING : wkhtml2pdf will interpret measurement units according to the total
+ *  width of the document. That means that if an element overflows from the page
+ *  (eg. left: 7.5in; width: 2in;) all the dimensions will be scaled down.
+*/
+.void-show {
+    width: 300px;
+    top: 0.3in;
+    font-size: 80pt;
+    left: 250px;
+    position: absolute;
+    color: #ee1c1c;
+    z-index: -1;
+    transform: rotate(-27deg);
+}

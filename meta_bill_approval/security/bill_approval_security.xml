@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Approval Categori-->
+    <record model="ir.module.category" id="module_bill_approval">
+        <field name="name">Approval Level For Journal/Bill/Payment</field>
+        <field name="description">Category For Bill Approval</field>
+        <!-- <field name="sequence">8</field> -->
+    </record>
+
+    <!--Bill Operation Send Groups-->
+    <record id="bill_operation_send_approve" model ="res.groups">
+        <field name="name">Operation Send Approval</field>
+        <field name="category_id" ref="module_bill_approval"/>
+    </record>
+
+    <!--Bill Operation Send Groups-->
+    <record id="bill_manager_approve" model ="res.groups">
+        <field name="name">Manager Approve</field>
+        <field name="category_id" ref="module_bill_approval"/>
+    </record>
+
+    <!--Bill Head of Finance Groups-->
+    <record id="bill_headof_finance_approve" model ="res.groups">
+        <field name="name">Head of Finance Approve</field>
+        <field name="category_id" ref="module_bill_approval"/>
+    </record>
+
+    <!--Bill CEO Groups-->
+    <record id="bill_ceo_approve" model ="res.groups">
+        <field name="name">CEO Approve</field>
+        <field name="category_id" ref="module_bill_approval"/>
+    </record>
+
+</odoo>

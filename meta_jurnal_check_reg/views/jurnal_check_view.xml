@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="jurnal_check_tree_view" model="ir.ui.view">
+            <field name="name">jurnal.check.tree</field>
+            <field name="model">jurnal.check.list</field>
+            <field name="arch" type="xml">
+                <tree create="false" delete="false">
+                    <field name="journal_check_no"/>
+                    <field name="journal_check_amount"/>
+                    <field name="journal_check_ref_name"/>
+                    <field name="journal_check_type"/>
+                    <field name="journal_check_id"/>
+                    <field name="journal_check_print_date"/>
+                    <field name="journal_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="account_journal_checks_search_view" model="ir.ui.view">
+            <field name="name">account.journal.check.search</field>
+            <field name="model">jurnal.check.list</field>
+            <field name="arch" type="xml">
+                 <search string="Check search">
+                <!-- Data Searching -->
+                    <field name="journal_check_no" string="Check Number" filter_domain="[('journal_check_no', 'ilike', self)]"/>
+
+                </search>
+            </field>
+        </record>
+
+        <record id="jurnal_check_form_view" model="ir.ui.view">
+            <field name="name">jurnal.check.form</field>
+            <field name="model">jurnal.check.list</field>
+            <field name="arch" type="xml">
+                <form create="false" delete="false">
+                    <sheet>
+                        <field name="journal_name" readonly="1" />
+                        <hr/>
+                        <group>
+                            <group>
+                                <field name="journal_check_ref_name" readonly="1" />
+                                <field name="journal_check_no" readonly="1" />
+                                <field name="journal_check_amount" readonly="1" />
+                            </group>
+                            <group>
+                                <field name="journal_check_type" readonly="1" />
+                                <field name="journal_check_id" readonly="1" />
+                                <field name="journal_check_print_date" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+ 
+        <record id="payment_jurnal_check_action" model="ir.actions.act_window">
+            <field name="name">Journal Check</field>
+            <field name="res_model">jurnal.check.list</field>  
+            <field name="view_mode">tree,form</field>
+            <field name="context"></field> 
+            <field name="view_id" ref="jurnal_check_tree_view"/>
+            <field name="domain"></field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                  Register a payment
+                </p><p>
+                  Payments are used to register liquidity movements. You can process those payments by your own means or by using installed facilities.
+                </p>
+            </field>
+        </record>
+
+        <menuitem action="payment_jurnal_check_action"
+            id="journal_payment_check" parent="account.menu_finance_entries_management"
+            sequence="14"/>
+
+    </data>
+</odoo>
+
+
+	<!--    account.account_reports_legal_statements_menu -->

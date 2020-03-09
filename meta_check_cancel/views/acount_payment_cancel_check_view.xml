@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account_payment_cancel_check_inherit" model="ir.ui.view">
+        <field name="name">account.payment.cancel.check</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='cancel']"  position="after">
+                <button name="print_checks_cancel" states="sent" string="Cancel Check" class="oe_highlight" type="object"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_order_form_extends" model="ir.ui.view">
+		<field name="name">purchase.order.form</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form"/>
+		<field name="arch" type="xml">
+            <xpath expr="//button[@name='button_confirm'][2]"  position="replace">
+				<button name="operation_send_approve" states="draft" string="Send Approval" class="btn" type="object" groups="meta_purchase_approval.operation_send_approve"/>
+			</xpath>
+
+            <xpath expr="//button[@name='action_rfq_send']"  position="before">
+                <button name="first_approval" states="first_approval" string="Approve" class="btn" type="object" groups="meta_purchase_approval.internal_audit_approve"/>
+                <button name="first_approval_reject" states="first_approval" string="Cancel" class="btn" type="object" groups="meta_purchase_approval.internal_audit_approve"/>
+
+                <button name="second_approval" states="second_approval" string="Approve" class="btn" type="object" groups="meta_purchase_approval.bpo_approve"/>
+                <button name="second_approval_reject" states="second_approval" string="Cancel" class="btn" type="object" groups="meta_purchase_approval.bpo_approve"/>
+
+                <button name="third_approval" states="third_approval" string="Approve" class="btn" type="object" groups="meta_purchase_approval.hop_approve"/>
+                <button name="third_approval_reject" states="third_approval" string="Cancel" class="btn" type="object" groups="meta_purchase_approval.hop_approve"/>
+
+                <button name="fourth_approval" states="fourth_approval" string="Approve" class="btn" type="object" groups="meta_purchase_approval.ceo_approve"/>
+                <button name="fourth_approval_reject" states="fourth_approval" string="Cancel" class="btn" type="object" groups="meta_purchase_approval.ceo_approve"/> 
+            </xpath>
+
+            <xpath expr="//button[@name='button_approve']"  position="replace">
+				<button name="button_confirm" type="object" states="to approve" string="Confirm Order"/>
+			</xpath>
+
+            <xpath expr="//field[@name='state']"  position="replace">
+				<field name="state" widget="statusbar" statusbar_visible="draft,purchase,first_approval,second_approval,third_approval,fourth_approval" readonly="1"/>
+			</xpath>
+
+        </field>
+    </record>
+</odoo>
+
+<!-- operation_send_approve -->

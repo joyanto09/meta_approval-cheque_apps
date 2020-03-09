@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Form View Of Customer  -->
+    <record id="dashboard_approval_form_view" model="ir.ui.view">
+        <field name="name">dash>board.form.view</field>
+        <field name="model">dash.board</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="name" invisible="1"></field>
+                    <h2 class="title"><strong>USER APPROVAL LIST</strong></h2>
+                        <hr/>
+                    <div class="row"><h3><strong style="color: #9E4485;">PURCHASE APPROVAL</strong></h3></div>
+
+                    <div class="row">
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="Internal Audit Approval" 
+                        name="open_purchase_first_approval_list"
+                        style="border: 2px solid white; height: 80px;" 
+                        icon="fa-bars"
+                        type="object"></button>
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="BPO Approval" 
+                        name="open_purchase_second_approval_list"
+                        style="border: 2px solid white; height: 80px;" 
+                        icon="fa-bars"
+                        type="object"></button>
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="Head Of Procurement Approval" 
+                        name="open_purchase_third_approval_list"
+                        style="border: 2px solid white; height: 80px;" 
+                        icon="fa-bars"
+                        type="object"></button>
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="CEO Approval" 
+                        name="open_purchase_fourth_approval_list"
+                        style="border: 2px solid white; height: 80px;" 
+                        icon="fa-bars"
+                        type="object"></button>
+                    </div>
+                    <hr/>
+                    <div class="row"><h3><strong style="color: #9E4485;">SALES APPROVAL</strong></h3></div>
+                    <div class="row">
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="Head Of Marketing Approval" 
+                        name="open_sales_first_approval_list"
+                        style="border: 2px solid white; height: 80px;"
+                        icon="fa-bars"
+                        type="object"></button>
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="Head Of Finance Approval" 
+                        name="open_sales_second_approval_list" 
+                        style="border: 2px solid white; height: 80px;"
+                        icon="fa-bars"
+                        type="object"></button>
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="COO Approval" 
+                        name="open_sales_third_approval_list" 
+                        style="border: 2px solid white; height: 80px;"
+                        icon="fa-bars"
+                        type="object"></button>
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="CEO Approval" 
+                        name="open_sales_fourth_approval_list"
+                        style="border: 2px solid white; height: 80px;"
+                        icon="fa-bars"
+                        type="object"></button>
+
+                    </div>
+                    <hr/>
+                    <div class="row"><h3><strong style="color: #9E4485;">PAYMENTS APPROVAL</strong></h3></div>
+                    <div class="row">
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="Maneger Approval" 
+                        name="open_payments_first_approval_list" 
+                        style="border: 2px solid white; height: 80px;"
+                        icon="fa-bars"
+                        type="object"></button>
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="Head Of Finance Approval" 
+                        name="open_payments_second_approval_list"
+                        style="border: 2px solid white; height: 80px;"
+                        icon="fa-bars"
+                        type="object"></button>
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="CEO Approval" 
+                        name="open_payments_third_approval_list"
+                        style="border: 2px solid white; height: 80px;"
+                        icon="fa-bars"
+                        type="object"></button>
+                    </div>
+                    <hr/>
+                    <div class="row"><h3><strong style="color: #9E4485;">JOURNAL APPROVAL</strong></h3></div>
+                    <div class="row">
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="Maneger Approval" 
+                        name="open_journal_first_approval_list"
+                        style="border: 2px solid white; height: 80px;"
+                        icon="fa-bars"
+                        type="object"></button>
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="Head Of Finance Approval" 
+                        name="open_journal_second_approval_list"
+                        style="border: 2px solid white; height: 80px;"
+                        icon="fa-bars"
+                        type="object"></button>
+                        <button class="col-lg-3 col-md-6 my-1 oe_highlight" string="CEO Approval" 
+                        name="open_journal_third_approval_list"
+                        style="border: 2px solid white; height: 80px;"
+                        icon="fa-bars"
+                        type="object"></button>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <!--   Define custom action -->
+
+    <record id="action_dashboard_approval" model="ir.actions.act_window">
+        <field name="name">Approval</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="target">inline</field>
+        <field name="res_model">dash.board</field>
+        <!-- <field name="view_type">form</field> -->
+        <field name="view_mode">form</field>
+    </record>
+
+    <menuitem id="meta_approval_root" name="User Approval" sequence="1"/>
+    <menuitem id="meta_approval_user_root" name="Approval List" parent="meta_approval_root" action="action_dashboard_approval" sequence="1"/>
+
+</odoo>
+

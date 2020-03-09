@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+    <template id="print_check_bd">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div style="border: 1px solid white;">
+                    <div class="page">
+                        <div class="check titile">
+                            <div style="width: 50%; float: left;">
+                                <div class="void-show">
+                                </div>
+                            </div>
+                            <div style="width: 50%; float: right;">
+                                <div class="check-date" style="margin-top: .6in; margin-left: 1.7in; margin-right: 23px; font-size: 35px;">
+                                    <table style="width: 100%; height: .3in; text-align: center; font-size: 30px;">
+                                        <td>
+                                            <strong><span t-esc="o.first_charecter_day"/></strong>
+                                        </td>
+                                        <td>
+                                            <strong><span t-esc="o.second_charecter_day"/></strong>
+                                        </td>
+                                        <td>
+                                            <strong><span t-esc="o.first_charecter_month"/></strong>
+                                        </td>
+                                        <td>
+                                            <strong><span t-esc="o.second_charecter_month"/></strong>
+                                        </td>
+                                        <td>
+                                            <strong><span t-esc="o.first_charecter_year"/></strong>
+                                        </td>
+                                        <td>
+                                            <strong><span t-esc="o.second_charecter_year"/></strong>
+                                        </td>
+                                        <td>
+                                            <strong><span t-esc="o.third_charecter_year"/></strong>
+                                        </td>
+                                        <td>
+                                            <strong><span t-esc="o.fourth_charecter_year"/></strong>
+                                        </td>
+                                    </table>
+                                    <!-- <span t-esc="datetime.datetime.strptime(str(o.payment_date), '%Y-%m-%d').strftime('%d %m %Y')"/> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="check pay name">
+                            <div style="width: 100%; float: right;">
+                                <div class="check-" style="margin-top: 38px; font-size: 20px;">
+                                    <p style="text-align: center; margin-bottom: -5px;"> <span t-field="o.check_pay_order_details"/> <span t-field="o.partner_id.name"/> </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="check amount">
+                            <div style="width: 68%; float: left;">
+                                <div class="check-ammount" style="margin-top: 18px; margin-left: 15px; font-size: 20px;">
+                                    <p style="">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 
+                                        <span t-field="o.check_amount_word"/> Only</p>
+                                </div>
+                            </div>
+                            <div style="width: 30%; float: right;">
+                                <div class="check-ammount" style="margin-top: 30px; margin-left: 21px; font-size: 20px;">
+                                    <p style="">&#160; &#160; <span t-esc="o.amount_check3" t-options='{"widget": "float", "precision": 2}'/></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="check company">
+                            <div style="width: 70%; float: left;">
+                                <div class="check-company" style="margin-bottom: 41px; margin-left: 11px;">
+                                    <!-- <span t-field="o.check_number"/> -->
+                                </div>
+                            </div>
+                            <div style="width: 30%; float: right;">
+                                <div class="check-ammount" style="margin-top: 20px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>
+

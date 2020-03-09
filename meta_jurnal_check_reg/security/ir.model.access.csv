@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_meta_jurnal_check_reg,access.jurnal.check.list,model_jurnal_check_list,,1,1,1,1

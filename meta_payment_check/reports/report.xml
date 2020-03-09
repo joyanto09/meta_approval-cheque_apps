@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <record id="paperformat_check_bd" model="report.paperformat">
+            <field name="name">BD Check Letter</field>
+            <field name="default" eval="False" />
+            <field name="format">custom</field>
+            <field name="page_height">89</field>
+            <field name="page_width">191</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+    <report id="action_print_check_bd"
+        string="Print Check BD"
+        model="account.payment"
+        name="meta_payment_check.print_check_bd"
+        file="meta_payment_check.print_check_bd"
+        report_type="qweb-html"
+        attachment_use="True"
+        paperformat="meta_payment_check.paperformat_check_bd"
+        print_report_name="'Check - %s' % (object.partner_id.name or '',)"
+        menu="True" 
+    />
+
+</odoo>
+
+<!-- attachment="'check_'+(object.partner_id and object.partner_id.name or 'Internal')+'_'+(object.name)+'_top.pdf'"
+        paperformat="l10n_us_check_printing.paperformat_check_us"
+        print_report_name="'Check Top - %s' % (object.partner_id.name or '',)"  paperformat="meta_payment_check.paperformat_check_bd"-->

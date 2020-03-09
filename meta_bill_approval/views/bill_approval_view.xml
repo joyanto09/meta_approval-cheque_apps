@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_bill_approval_view_form_extends" model="ir.ui.view">
+		<field name="name">account.move.form</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form"/>
+		<field name="arch" type="xml">
+            <xpath expr="//button[@name='action_post']"  position="replace">
+				<button name="bill_operation_send_approval" states="" string="Send Approval" class="btn" type="object" groups="meta_bill_approval.bill_operation_send_approve"
+                                    attrs="{'invisible': ['|', ('state', 'in', ('first_approval', 'second_approval', 'third_approval', 'to approve', 'posted', 'cancel')), ('type', 'not in', ('entry'))]}"/>
+			</xpath>
+
+            <xpath expr="//button[@name='button_cancel']"  position="after">
+				<button name="first_approval" states="first_approval" string="Approve" class="btn" type="object" groups="meta_bill_approval.bill_manager_approve"/>
+                <button name="first_approval_reject" states="first_approval" string="Cancel" class="btn" type="object" groups="meta_bill_approval.bill_manager_approve"/>
+
+                <button name="second_approval" states="second_approval" string="Approve" class="btn" type="object" groups="meta_bill_approval.bill_headof_finance_approve"/>
+                <button name="second_approval_reject" states="second_approval" string="Cancel" class="btn" type="object" groups="meta_bill_approval.bill_headof_finance_approve"/>
+
+                <button name="third_approval" states="third_approval" string="Approve" class="btn" type="object" groups="meta_bill_approval.bill_ceo_approve"/>
+                <button name="third_approval_reject" states="third_approval" string="Cancel" class="btn" type="object" groups="meta_bill_approval.bill_ceo_approve"/>
+
+                <button name="action_post" string="Post" states="to approve" class="oe_highlight" type="object" groups="" /> <!--attrs="{'invisible': [('state', '!=', 'draft')]}" attrs="{'invisible': [('type', 'in', ('out_invoice', 'out_refund'))]}"-->
+			</xpath>
+
+            <xpath expr="//field[@name='state']"  position="replace">
+				<field name="state" widget="statusbar" statusbar_visible="draft,posted,first_approval,second_approval,third_approval,"
+                     attrs="{'invisible': [('type', 'not in', ('entry'))]}"/>
+			</xpath>
+
+            <xpath expr="//button[@name='button_cancel']"  position="before">
+				<button name="action_post" string="Post" states="" class="oe_highlight" type="object" groups="" attrs="{'invisible': ['|', ('state', 'in', ('posted','first_approval','second_approval','third_approval','to approve')), ('type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}"/>
+			</xpath>
+        </field>
+    </record>
+</odoo>

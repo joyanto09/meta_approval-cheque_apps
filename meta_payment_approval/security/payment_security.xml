@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Approval Categori-->
+    <!-- <record model="ir.module.category" id="module_payment_approval">
+        <field name="name">Approval Level For Payment</field>
+        <field name="description">Category For Payment and Registary Payment Approval</field>
+        
+    </record> -->
+
+    <!--Payment Operation Send Groups-->
+    <!-- <record id="payment_operation_send_approve" model ="res.groups">
+        <field name="name">Operation Send Approval</field>
+        <field name="category_id" ref="module_payment_approval"/>
+    </record> -->
+
+    <!--Payment Manager Groups-->
+    <!-- <record id="payment_manager_approve" model ="res.groups">
+        <field name="name">Manager Approve</field>
+        <field name="category_id" ref="module_payment_approval"/>
+    </record> -->
+
+    <!--Payment Head of Finance Groups-->
+    <!-- <record id="payment_headof_finance_approve" model ="res.groups">
+        <field name="name">Head of Finance Approve</field>
+        <field name="category_id" ref="module_payment_approval"/>
+    </record> -->
+
+    <!--Payment CEO Groups-->
+    <!-- <record id="payment_ceo_approve" model ="res.groups">
+        <field name="name">CEO Approve</field>
+        <field name="category_id" ref="module_payment_approval"/>
+    </record> -->
+
+</odoo>

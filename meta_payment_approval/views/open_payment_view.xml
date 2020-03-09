@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="opent_payment_view_form_extends" model="ir.ui.view">
+		<field name="name">account.move.approval.form</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form"/>
+		<field name="arch" type="xml">
+
+            <xpath expr="//sheet/div[1]/button[@name='open_reconcile_view']"  position="before">
+				<button name="open_payment_form_view" 
+                        states="" 
+                        string="Payment" 
+                        class="oe_stat_button" 
+                        type="object" 
+                        groups="" 
+                        icon="fa-money"
+                        attrs="{'invisible': ['|', '|', ('state', '!=', 'posted'), ('invoice_payment_state', '!=', 'not_paid'), ('type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt'))]}"
+                        /> <!--attrs="{'invisible': ['|', ('type', '!=', 'entry'), ('id', '=', False)]}"-->
+			</xpath>
+
+        </field>
+    </record>
+</odoo>

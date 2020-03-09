@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="print_prenumbered_view_form_extends" model="ir.ui.view">
+		<field name="name">print.prenumbered.form</field>
+		<field name="model">print.prenumbered.checks</field>
+		<field name="inherit_id" ref="account_check_printing.print_pre_numbered_checks_view"/>
+		<field name="arch" type="xml">
+
+			<xpath expr="//field[@name='next_check_number']"  position="after">
+				<field name="check_print_date" string="Print Date"/>
+			</xpath>
+
+            <xpath expr="//button[@name='print_checks']"  position="replace">
+				<button name="print_checks_bd" string="Print Check Bd" states="" class="oe_highlight" type="object" groups=""/>
+			</xpath>
+
+        </field>
+    </record>
+</odoo>

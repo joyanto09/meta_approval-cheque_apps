@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="account_payment_checks_search_view" model="ir.ui.view">
+		<field name="name">account.payment.check.search</field>
+		<field name="model">account.payment</field>
+		<field name="inherit_id" ref="account.view_account_payment_search"/>
+		<field name="arch" type="xml">
+            <xpath expr="//field[@name='name']"  position="after">
+				<field name="check_number_show" string="Check Number" filter_domain="[('check_number_show', 'ilike', self)]"/>
+			</xpath>
+        </field>
+    </record>
+</odoo>
+
+<!-- attrs="{'invisible': ['|', ('payment_type', '!=', 'outbound'), ('state', '!=', 'posted')]}"-->
+<!-- , 'required': [('payment_type', '=', 'inbound')]   attrs="{'invisible': [('receive_cash', '!=', True )], 'required': [('receive_cash', '=', True)]}"-->
+
+<!-- attrs="{'invisible': ['|', ('payment_type', '!=', 'inbound'), ('receive_cash', '=', True)]}" -->

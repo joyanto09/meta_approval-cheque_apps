@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="meta_assets_backend" name="meta_payment_check assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/meta_payment_check/static/css/watemark_show.css"/>
+        </xpath>
+    </template>
+
+</odoo>

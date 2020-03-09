@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="invoice_bill_state_view_form_extends" model="ir.ui.view">
+		<field name="name">account.state.move.form</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form"/>
+		<field name="arch" type="xml">
+            <xpath expr="//sheet/div[1]/button[@name='open_reconcile_view']"  position="before">
+                <label for=""  attrs="{'invisible': ['|', ('state', 'in', ('posted','first_approval','second_approval','third_approval','to approve')), ('type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}">
+                    <a href="#" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true">Draft</a>
+                </label>
+                <label for="" attrs="{'invisible': ['|', '|', ('state', '!=', 'posted'), ('invoice_payment_state', '!=', 'not_paid'), ('type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt'))]}">
+                    <a href="#" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true">Posted</a>
+                </label>
+			</xpath>
+        </field>
+    </record>
+</odoo>

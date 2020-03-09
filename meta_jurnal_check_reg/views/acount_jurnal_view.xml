@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="account_jurnal_check_inherit_view" model="ir.ui.view">
+		<field name="name">account.jurnal.check</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form"/>
+		<field name="arch" type="xml">
+            <xpath expr="//button[@name='action_duplicate']"  position="after">
+				<button name="print_checks_journal_bd" string="Print Check" type="object" class="oe_highlight"
+                        attrs="{'invisible': ['|', '|', ('state', 'not in', ('posted')), ('type', 'not in', ('entry')), ('journal_check', '!=', True)]}"/>
+                <button name="print_checks_cancel" string="Cancel Check" type="object" class="oe_highlight"
+                        attrs="{'invisible': ['|', '|', '|', ('state', 'not in', ('posted')), ('type', 'not in', ('entry')), ('hide_print_button', '!=', True), ('journal_payment_cash', '=', True)]}"/>
+			</xpath>
+
+			<xpath expr="//field[@name='ref']"  position="after">
+				<field name="amount_check" invisible="1"></field>
+                <field name="amount_check2" invisible="1"></field>
+                <field name="check_amount_word" invisible="1"></field>
+                <field name="partner_id" invisible="" attrs="{'required': [('journal_check', '!=', False)]}"></field>
+                <field name="check_pay_order" invisible="" attrs="{'invisible': ['|', ('journal_check', '!=', True), ('type', '!=', 'entry')]}"></field>
+                <field name="check_pay_order_details" invisible="1"></field>
+                <field name="journal_check_number" invisible="" readonly="1" attrs="{'invisible': ['|', ('state', 'not in', ('posted')), ('type', 'not in', ('entry'))]}"></field>
+                <field name="get_print_date" invisible="1"></field>
+                <field name="amount_check3" invisible="1"></field>
+                <field name="journal_void_status" invisible="" attrs="{'invisible': ['|', '|', ('type', '!=', 'entry'), ('state', 'not in', ('posted')), ('journal_payment_cash', '=', True)]}"></field>
+                <field name="journal_void_status_reason" invisible="" attrs="{'invisible': ['|', '|', ('journal_void_status', '!=', True), ('type', 'not in', ('entry')), ('state', 'not in', ('posted'))]}"></field>
+                <field name="journal_hide_void_status" invisible="1"></field>
+			</xpath>
+
+            <xpath expr="//field[@name='journal_id']"  position="after">
+				<field name="first_charecter_year" invisible="1"></field>
+                <field name="second_charecter_year" invisible="1"></field>
+                <field name="third_charecter_year" invisible="1"></field>
+                <field name="fourth_charecter_year" invisible="1"></field>
+                <field name="first_charecter_month" invisible="1"></field>
+                <field name="second_charecter_month" invisible="1"></field>
+                <field name="first_charecter_day" invisible="1"></field>
+                <field name="second_charecter_day" invisible="1"></field>
+
+                <field name="hide_print_button" invisible="1"></field>
+                <field name="journal_payment_cash" invisible="1"></field>
+                <field name="journal_check" invisible="" attrs="{'invisible': [('type', '!=', 'entry')]}"></field>
+                <field name="journal_check_type" invisible="" attrs="{'invisible': ['|', ('journal_check', '!=', True), ('type', '!=', 'entry')]}"></field>
+			</xpath>
+        </field>
+    </record>
+</odoo>
+
+<!-- attrs="{'invisible': ['|', ('payment_type', '!=', 'outbound'), ('state', '!=', 'posted')]}"-->
+<!-- , 'required': [('payment_type', '=', 'inbound')]   attrs="{'invisible': [('receive_cash', '!=', True )], 'required': [('receive_cash', '=', True)]}"-->
+
+<!-- attrs="{'invisible': ['|', ('payment_type', '!=', 'inbound'), ('receive_cash', '=', True)]}" -->
